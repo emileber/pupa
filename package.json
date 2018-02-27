@@ -4,6 +4,9 @@
   "description": "Simple micro templating",
   "license": "MIT",
   "repository": "sindresorhus/pupa",
+  "main": "dist/pupa.common.js",
+  "module": "dist/pupa.esm.js",
+  "browser": "dist/pupa.js",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -13,7 +16,11 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "xo && ava"
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "rollup --config",
+    "lint": "xo",
+    "test": "npm run lint && ava"
   },
   "files": [
     "index.js"
@@ -41,6 +48,11 @@
   ],
   "devDependencies": {
     "ava": "*",
+    "babel-preset-env": "^1.6.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.56.3",
+    "rollup-plugin-buble": "^0.19.2",
+    "rollup-plugin-uglify": "^3.0.0",
     "xo": "*"
   },
   "xo": {

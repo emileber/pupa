@@ -13,9 +13,9 @@ module.exports = (tpl, data) => {
 	return tpl.replace(re, (_, key) => {
 		let ret = data;
 
-		for (const prop of key.split('.')) {
+		key.split('.').forEach(prop => {
 			ret = ret ? ret[prop] : '';
-		}
+		});
 
 		return ret || '';
 	});
